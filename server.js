@@ -6,6 +6,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
+var handlebars = require("handlebars");
 
 // ==============================================================================
 // EXPRESS CONFIGURATION
@@ -15,13 +16,14 @@ var methodOverride = require("method-override");
 // Tells node that we are creating an "express" server
 var app = express();
 
+// Sets an initial port.
+var PORT = process.env.PORT || 8080;
+
 // Override with POST having ?_method=DELETE
 app.use(methodOverride("_method"));
 
-// Sets an initial port.
-var PORT = process.env.PORT || 8080;
 // var PORT = process.env.PORT || 3000;
-
+app.use(express.static(process.cwd() + "/public"));
 // BodyParser makes it possible for our server to interpret data sent to it.
 // The code below is pretty standard.
 app.use(bodyParser.json());
@@ -29,12 +31,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
+app.use(methodOverride("method"));
+
+app.engine("handlebars", handlebars({ defaultLayout: "main"}));
+app.set("view engine", "handlebars");
+
 // ================================================================================
 // ROUTER
 // The below points our server to a series of "route" files.
 // These routes give our server a "map" of how to respond when users visit or request data from various URLs.
 // ================================================================================
-
+require("./controllers/burgers_controller.js")(app);
 require("./app/routing/apiRoutes")(app);
 require("./app/routing/htmlRoutes")(app);
 
