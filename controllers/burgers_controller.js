@@ -12,10 +12,6 @@ module.exports = function (app) {
 
     });
 
-    // app.get("", function(req, res){
-    //   res.render("welcome");
-    // });
-
     app.put("/add", function (req, res) {
       console.log(req.body);
       var date = new Date();
@@ -29,6 +25,7 @@ module.exports = function (app) {
     });
 };
 
+/////////THE ORIGINAL WAY I WAS GOING TO DO IT//////////////////////////
 // Import the model (burger.js) to use its database functions.
 // var burger = require("../models/burger.js");
 

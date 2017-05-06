@@ -26,31 +26,33 @@ var orm = {
 
     });
   }
-  selectWhere: function(tableInput, colToSearch, valOfCol) {
+
+  ///////HOW I WAS GOING TO DO IT ORIGINALLY///////////////////////////
+  // selectWhere: function(tableInput, colToSearch, valOfCol) {
     // var queryString = "SELECT * FROM ?? WHERE ?? = ?";
 
     // connection.query(queryString, [tableInput, colToSearch, valOfCol], function(err, result) {
     //   return result;
     // });
-  },
+  // },
 
 
-  insertOne: function(tableInput, colToSearch, valOfCol) {
+  // insertOne: function(tableInput, colToSearch, valOfCol) {
     // var queryString = "SELECT * FROM ?? WHERE ?? = ?";
 
     // connection.query(queryString, [tableInput, colToSearch, valOfCol], function(err, result) {
     //   return result;
     // });
-  },
+  // },
 
 
-  updateOne: function(tableInput, colToSearch, valOfCol) {
+  // updateOne: function(tableInput, colToSearch, valOfCol) {
     // var queryString = "SELECT * FROM ?? WHERE ?? = ?";
 
     // connection.query(queryString, [tableInput, colToSearch, valOfCol], function(err, result) {
     //   return result;
     // });
-  }
+  // }
 };
 
 module.exports = orm;
